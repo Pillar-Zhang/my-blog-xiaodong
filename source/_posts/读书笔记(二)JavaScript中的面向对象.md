@@ -1,28 +1,28 @@
 ---
 title: 读书笔记(二)JavaScript中的面向对象
-date: 2016-03-30 20:40:29
+date: 2016-03-15 20:40:29
 tags: 《JavaScript高级程序设计》
 ---
 
-#面向对象
+# <font color=DarkRed size=6 face="黑体">1.面向对象</font>
 面向对象编程是用抽象方式创建基于现实世界模型的一种编程模式，主要包括模块化、多态、和封装几种技术。 对JavaScript而言，其核心是支持面向对象的，同时它也提供了强大灵活的基于原型的面向对象编程能力。 本文将会深入的探讨有关使用JavaScript进行面向对象编程的一些核心基础知识，包括对象的创建，继承机制， 最后还会简要的介绍如何借助ES6提供的新的类机制重写传统的JavaScript面向对象代码。
-
-## 面向对象的几个概念
+<!--more-->
+## <font color=DarkRed size=5 face="黑体">1.1 面向对象的几个概念</font>
 在进入正题前，先了解传统的面向对象编程（例如Java）中常会涉及到的概念，大致可以包括：
 
-类：定义对象的特征。它是对象的属性和方法的模板定义。
-对象（或称实例）：类的一个实例。
-属性：对象的特征，比如颜色、尺寸等。
-方法：对象的行为，比如行走、说话等。
-构造函数：对象初始化的瞬间被调用的方法。
-继承：子类可以继承父类的特征。例如，猫继承了动物的一般特性。
-封装：一种把数据和相关的方法绑定在一起使用的方法。
-抽象：结合复杂的继承、方法、属性的对象能够模拟现实的模型。
-多态：不同的类可以定义相同的方法或属性。
+- 类：定义对象的特征。它是对象的属性和方法的模板定义。
+- 对象（或称实例）：类的一个实例。
+- 属性：对象的特征，比如颜色、尺寸等。
+- 方法：对象的行为，比如行走、说话等。
+- 构造函数：对象初始化的瞬间被调用的方法。
+- 继承：子类可以继承父类的特征。例如，猫继承了动物的一般特性。
+- 封装：一种把数据和相关的方法绑定在一起使用的方法。
+- 抽象：结合复杂的继承、方法、属性的对象能够模拟现实的模型。
+- 多态：不同的类可以定义相同的方法或属性。
 在JavaScript的面向对象编程中大体也包括这些。不过在称呼上可能稍有不同，例如，JavaScript中没有原生的“类”的概念， 而只有对象的概念。因此，随着你认识的深入，我们会混用对象、实例、构造函数等概念。
 
-## 对象（类）的创建
-在JavaScript中，我们通常可以使用构造函数来创建特定类型的对象。诸如Object和Array这样的原生构造函数，在运行时会自动出现在执行环境中。 此外，我们也可以创建自定义的构造函数。例如：
+## <font color=DarkRed size=5 face="黑体">1.2 对象（类）的创建</font> 
+在<font color=LightCoral size=4 face="黑体">JavaScrip</font>t中，我们通常可以使用构造函数来创建特定类型的对象。诸如Object和Array这样的原生构造函数，在运行时会自动出现在执行环境中。 此外，我们也可以创建自定义的构造函数。例如：
 
     function Person(name, age, job) {
       this.name = name;
@@ -31,19 +31,19 @@ tags: 《JavaScript高级程序设计》
     }
     var person1 = new Person('Weiwei', 27, 'Student');
     var person2 = new Person('Lily', 25, 'Doctor');
-按照惯例，构造函数始终都应该以一个大写字母开头（和Java中定义的类一样），普通函数则小写字母开头。 要创建Person的新实例，必须使用new操作符。以这种方式调用构造函数实际上会经历以下4个步骤：
+按照惯例，构造函数始终都应该以一个大写字母开头（和Java中定义的类一样），普通函数则小写字母开头。 要创建<font color=LightCoral size=4 face="黑体">Person</font>的新实例，必须使用new操作符。以这种方式调用构造函数实际上会经历以下4个步骤：
 
-## 创建一个新对象（实例）
+## <font color=DarkRed size=5 face="黑体">1.3 创建一个新对象（实例）</font>
 将构造函数的作用域赋给新对象（也就是重设了this的指向，this就指向了这个新对象）
 执行构造函数中的代码（为这个新对象添加属性）
 返回新对象
 有关new操作符的更多内容请参考这篇文档。
 
-在上面的例子中，我们创建了Person的两个实例person1和person2。 这两个对象默认都有一个constructor属性，该属性指向它们的构造函数Person，也就是说：
+在上面的例子中，我们创建了Person的两个实例<font color=DarkRed size=4 face="黑体">person1</font>和<font color=#0099ff size=4 face="黑体">person2</font>。 这两个对象默认都有一个constructor属性，该属性指向它们的构造函数Person，也就是说：
 
     console.log(person1.constructor == Person);  //true
     console.log(person2.constructor == Person);  //true
-## 自定义对象的类型检测
+## <font color=DarkRed size=5 face="黑体">1.4 自定义对象的类型检测</font>
 
 我们可以使用instanceof操作符进行类型检测。我们创建的所有对象既是Object的实例，同时也是Person的实例。 因为所有的对象都继承自Object。
 
@@ -52,11 +52,11 @@ tags: 《JavaScript高级程序设计》
     console.log(person2 instanceof Object);  //true
     console.log(person2 instanceof Person);  //true
 
-#构造函数
+# <font color=DarkRed size=6 face="黑体">2.构造函数</font>
 
 我们不建议在构造函数中直接定义方法，如果这样做的话，每个方法都要在每个实例上重新创建一遍，这将非常损耗性能。 ——不要忘了，ECMAScript中的函数是对象，每定义一个函数，也就实例化了一个对象。
 幸运的是，在ECMAScript中，我们可以借助原型对象来解决这个问题。
-## 借助原型模式定义对象的方法
+## <font color=DarkRed size=5 face="黑体">2.1 借助原型模式定义对象的方法</font>
 我们创建的每个函数都有一个prototype属性，这个属性是一个指针，指向该函数的原型对象， 该对象包含了由特定类型的所有实例共享的属性和方法。也就是说，我们可以利用原型对象来让所有对象实例共享它所包含的属性和方法。
 
     function Person(name, age, job) {
@@ -80,9 +80,9 @@ tags: 《JavaScript高级程序设计》
         this.name = name;
     }
     Chinese.prototype.country = 'China'; // 公共属性，所有实例共享
-## 原型对象
+## <font color=DarkRed size=5 face="黑体">2.2 原型对象</font>
 现在我们来深入的理解一下什么是原型对象。
-只要创建了一个新函数，就会根据一组特定的规则为该函数创建一个prototype属性，这个属性指向函数的原型对象。 在默认情况下，所有原型对象都会自动获得一个constructor属性，这个属性包含一个指向prototype属性所在函数的指针。 也就是说：Person.prototype.constructor指向Person构造函数。
+只要创建了一个新函数，就会根据一组特定的规则为该函数创建一个<font color=LightCoral size=4 face="黑体">prototype</font>属性，这个属性指向函数的原型对象。 在默认情况下，所有原型对象都会自动获得一个<font color=LightCoral size=4 face="黑体">constructor</font>属性，这个属性包含一个指向<font color=LightCoral size=4 face="黑体">prototype</font>属性所在函数的指针。 也就是说：<font color=LightCoral size=4 face="黑体">Person.prototype.constructor</font>指向Person构造函数。
 创建了自定义的构造函数之后，其原型对象默认只会取得constructor属性；至于其他方法，则都是从Object继承而来的。 当调用构造函数创建一个新实例后，该实例内部将包含一个指针（内部属性），指向构造函数的原型对象。ES5中称这个指针为[[Prototype]]， 在Firefox、Safari和Chrome在每个对象上都支持一个属性__proto__（目前已被废弃）；而在其他实现中，这个属性对脚本则是完全不可见的。 要注意，这个链接存在于实例与构造函数的原型对象之间，而不是实例与构造函数之间。
 
 这三者关系的示意图如下：
@@ -117,7 +117,7 @@ Person的每个实例person1和person2都包含一个内部属性（通常为__p
     Object.keys(p1); // ["name", "age", "job"]
 此外，如果你想要得到所有实例属性，无论它是否可枚举，都可以使用Object.getOwnPropertyName()方法。
 
-## 更简单的原型语法
+## <font color=DarkRed size=5 face="黑体">2.3 更简单的原型语法</font>
 
 在上面的代码中，如果我们要添加原型属性和方法，就要重复的敲一遍Person.prototype。为了减少这个重复的过程， 更常见的做法是用一个包含所有属性和方法的对象字面量来重写整个原型对象。 参考资料。
 
@@ -147,14 +147,14 @@ Person的每个实例person1和person2都包含一个内部属性（通常为__p
       enumerable: false,
       value: Person
     });
-## 组合使用构造函数模式和原型模式
+## <font color=DarkRed size=5 face="黑体">2.4 组合使用构造函数模式和原型模式</font>
 
 创建自定义类型的最常见方式，就是组合使用构造函数模式与原型模式。构造函数模式用于定义实例属性， 而原型模式用于定义方法和共享的属性。结果，每个实例都会有自己的一份实例属性的副本，但同时又共享着对方的引用， 最大限度的节省了内存。
 
 继承
 大多的面向对象语言都支持两种继承方式：接口继承和实现继承。ECMAScript只支持实现继承，而且其实现继承主要依靠原型链来实现。
 
-# 原型链继承
+# <font color=DarkRed size=6 face="黑体">3.原型链继承</font>
 
 使用原型链作为实现继承的基本思想是：利用原型让一个引用类型继承另一个引用类型的属性和方法。首先我们先回顾一些基本概念：
 
@@ -210,7 +210,7 @@ instance.constructor现在指向的是Father
 
 也就是说，Child继承了Father，而Father继承了Object。当调用了instance.toString()时， 实际上调用的是保存在Object.prototype中的那个方法。
 
-## 原型链继承的问题
+## <font color=DarkRed size=5 face="黑体">3.1 原型链继承的问题</font>
 
 首先是顺序，一定要先继承父类，然后为子类添加新方法。
 
@@ -242,7 +242,7 @@ instance.constructor现在指向的是Father
 
 最后，在创建子类型的实例时，不能向超类型的构造函数中传递参数。实际上，应该说是没有办法在不影响所有对象实例的情况下， 给超类型的构造函数传递参数。因此，我们很少单独使用原型链。
 
-## 借用构造函数继承
+## <font color=DarkRed size=5 face="黑体">3.2 借用构造函数继承</font>
 
 借用构造函数（constructor stealing）的基本思想如下：即在子类构造函数的内部调用超类型构造函数。
 
@@ -265,7 +265,7 @@ instance.constructor现在指向的是Father
 借用构造函数的缺点
 同构造函数一样，无法实现方法的复用。
 
-## 组合使用原型链和借用构造函数
+## <font color=DarkRed size=5 face="黑体">3.3 组合使用原型链和借用构造函数</font>
 
 通常，我们会组合使用原型链继承和借用构造函数来实现继承。也就是说，使用原型链实现对原型属性和方法的继承， 而通过借用构造函数来实现对实例属性的继承。这样，既通过在原型上定义方法实现了函数复用，又能够保证每个实例都有它自己的属性。 我们改造最初的例子如下：
 
@@ -300,7 +300,7 @@ instance.constructor现在指向的是Father
     student1.saySchool(); // Southeast University
 组合集成避免了原型链和借用构造函数的缺陷，融合了它们的优点，成为了JavaScript中最常用的继承模式。 而且，instanceof和isPropertyOf()也能够用于识别基于组合继承创建的对象。
 
-## 组合继承的改进版：使用Object.create()
+## <font color=DarkRed size=5 face="黑体">3.4 组合继承的改进版：使用Object.create()</font>
 
 在上面，我们继承父类的原型方法使用的是Student.prototype = new Person()。 这样做有很多的问题。 改进方法是使用ES5中新增的Object.create()。可以调用这个方法来创建一个新对象。新对象的原型就是调用create()方法传入的第一个参数：
 
@@ -319,7 +319,7 @@ instance.constructor现在指向的是Father
     Student.prototype = createObject(Person.prototype);
 从本质上讲，createObject()对传入其中的对象执行了一次浅复制。
 
-# ES6中的面向对象语法
+# <font color=DarkRed size=6 face="黑体">5.ES6中的面向对象语法</font>
 ES6中引入了一套新的关键字用来实现class。 JavaScript仍然是基于原型的，这些新的关键字包括class、 constructor、 static、 extends、 和super。
 
 对前面的代码修改如下：
@@ -356,7 +356,7 @@ ES6中引入了一套新的关键字用来实现class。 JavaScript仍然是基�
      stu2.sayName(); // lily
      stu2.saySchool(); // Nanjing University`
 
-类：class <font color=LightSalmon size=5 face="黑体">class</font>
+类：<font color=LightSalmon size=5 face="黑体">class</font>
 
 是JavaScript中现有基于原型的继承的语法糖。ES6中的类并不是一种新的创建对象的方法，只不过是一种“特殊的函数”， 因此也包括类表达式和类声明， 但需要注意的是，与函数声明不同的是，类声明不会被提升。 参考链接
 
