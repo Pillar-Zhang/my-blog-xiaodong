@@ -4,8 +4,9 @@ date: 2016-03-10 16:04:01
 tags: 《JavaScript高级程序设计》
 ---
 
+![人海][4]
 
-    javascript中的的函数运行在他们被定义的作用域里，而不是他们被执行的作用域里。
+	javascript中的的函数运行在他们被定义的作用域里，而不是他们被执行的作用域里
 <!--more-->
 ## 问题的提出  ##
 
@@ -180,7 +181,7 @@ JavaScript中没有块级作用域，例如：
 	alert(sum);    //30
 
 
-
+[4]: http://7xsgf8.com1.z0.glb.clouddn.com/image/bgrenhai.jpg
 
 
 

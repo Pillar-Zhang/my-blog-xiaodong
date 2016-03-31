@@ -3,10 +3,14 @@ title: 读书笔记(二)JavaScript中的面向对象
 date: 2016-03-15 20:40:29
 tags: 《JavaScript高级程序设计》
 ---
+![湖光][1]
 
+    JavaScript中一切皆为对象
+
+<!--more-->
 # <font color=DarkRed size=6 face="黑体">1.面向对象</font>
 面向对象编程是用抽象方式创建基于现实世界模型的一种编程模式，主要包括模块化、多态、和封装几种技术。 对JavaScript而言，其核心是支持面向对象的，同时它也提供了强大灵活的基于原型的面向对象编程能力。 本文将会深入的探讨有关使用JavaScript进行面向对象编程的一些核心基础知识，包括对象的创建，继承机制， 最后还会简要的介绍如何借助ES6提供的新的类机制重写传统的JavaScript面向对象代码。
-<!--more-->
+
 ## <font color=DarkRed size=5 face="黑体">1.1 面向对象的几个概念</font>
 在进入正题前，先了解传统的面向对象编程（例如Java）中常会涉及到的概念，大致可以包括：
 
@@ -386,5 +390,4 @@ super关键字用于调用父对象上的函数。 super.prop和super[expr]表�
 
 
 
-[1]:http://7xsgf8.com1.z0.glb.clouddn.com/imgprototype-graph-1.jpg
-[2]: http://7xsgf8.com1.z0.glb.clouddn.com/imgprototype-chain-inheritance2.jpg
+[1]: http://7xsgf8.com1.z0.glb.clouddn.com/image/bghuguang.jpg
