@@ -1,11 +1,11 @@
 ---
 title: 读书笔记(二):JavaScript中的面向对象
-date:  2016-03-15 20:40:29
+date: 2016-03-15 20:40:29
 tags: 《JavaScript高级程序设计》
 ---
 ![湖光][1]
 
-        JavaScript中一切皆为对象
+                      JavaScript中一切皆为对象
 
 <!--more-->
 # <font color=DarkRed size=6 face="黑体">1.面向对象</font>
@@ -399,4 +399,4 @@ super关键字用于调用父对象上的函数。 super.prop和super[expr]表�
 
 
 
-[1]: http://7xsgf8.com1.z0.glb.clouddn.com/image/bghuguang.jpg
+[1]: http://7xsgf8.com1.z0.glb.clouddn.com/image/bghushui.png

@@ -1,8 +1,11 @@
 ---
 title: HTML5、CSS3、ES6编程规范
-date:  2016-03-21 20:09:24
-tags:  知识点
+date: 2016-03-21 20:09:24
+tags: 知识点
 ---
+
+![图片](http://7xsgf8.com1.z0.glb.clouddn.com/image/bgshuye.png)
+
 
 		如何才能写出高质量的代码，一定要熟悉各个编程语言的规范。
 

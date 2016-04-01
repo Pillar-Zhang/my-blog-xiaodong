@@ -1,7 +1,7 @@
 ---
 title: JavaScript作用域原型
-date:  2016-03-10 16:04:01
-tags:  知识点
+date: 2016-03-10 16:04:01
+tags: 知识点
 ---
 
 ![人海][4]
@@ -181,7 +181,7 @@ JavaScript中没有块级作用域，例如：
 	alert(sum);    //30
 
 
-[4]: http://7xsgf8.com1.z0.glb.clouddn.com/image/bgrenhai.jpg
+[4]: http://7xsgf8.com1.z0.glb.clouddn.com/image/bghuguang.jpg
 
 
 

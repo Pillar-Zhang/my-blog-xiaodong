@@ -1,10 +1,12 @@
 ---
 title: 十个经典的JavaScript面试题
-date:  2016-04-01 00:40:29
-tags:  知识点
+date: 2016-04-01 00:40:29
+tags: 知识点
 ---
+![图片](http://7xsgf8.com1.z0.glb.clouddn.com/image/bgmeihua%20.png)
 
-	对当前的Web世界而言，JavaScript是一门你必须精通的语言，因此本文借用一些面试题来回顾一下JavaScript中的典型知识点。
+
+			     对当前的Web世界而言，JavaScript是一门你必须精通的语言。
 
 <!--more-->
 

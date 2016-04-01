@@ -1,9 +1,9 @@
 ---
 title: 读书笔记(一)：JavaScript中的作用域和上下文
-date:  2016-03-7 17:18:37
+date: 2016-03-7 17:18:37
 tags: 《JavaScript高级程序设计》
 ---
-
+![图片](http://7xsgf8.com1.z0.glb.clouddn.com/image/bghuse.png)
     理解作用域和上下文是学习JavaScript编程的起点，理解这些概念非常的重要。
 
 <!--more-->

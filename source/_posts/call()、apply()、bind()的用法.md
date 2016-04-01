@@ -1,8 +1,10 @@
 ---
 title: call()、apply()、bind()的用法
-date:  2016-03-27 12:09:24
-tags:  知识点
+date: 2016-03-27 12:09:24
+tags: 知识点
 ---
+![图片](http://7xsgf8.com1.z0.glb.clouddn.com/image/bgxiaohu.jpg)
+
 
       本文将要探讨JavaScript中函数的一些特殊用法，包括`call`、`apply`、`bind`三个原型方法。
 
