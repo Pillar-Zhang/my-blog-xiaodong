@@ -1,11 +1,11 @@
 ---
-title: 读书笔记(二)JavaScript中的面向对象
-date: 2016-03-15 20:40:29
+title: 读书笔记(二):JavaScript中的面向对象
+date:  2016-03-15 20:40:29
 tags: 《JavaScript高级程序设计》
 ---
 ![湖光][1]
 
-    JavaScript中一切皆为对象
+        JavaScript中一切皆为对象
 
 <!--more-->
 # <font color=DarkRed size=6 face="黑体">1.面向对象</font>
@@ -25,7 +25,7 @@ tags: 《JavaScript高级程序设计》
 - 多态：不同的类可以定义相同的方法或属性。
 在JavaScript的面向对象编程中大体也包括这些。不过在称呼上可能稍有不同，例如，JavaScript中没有原生的“类”的概念， 而只有对象的概念。因此，随着你认识的深入，我们会混用对象、实例、构造函数等概念。
 
-## <font color=DarkRed size=5 face="黑体">1.2 对象（类）的创建</font> 
+## <font color=DarkRed size=5 face="黑体">1.2 对象（类）的创建</font>
 在<font color=LightCoral size=4 face="黑体">JavaScrip</font>t中，我们通常可以使用构造函数来创建特定类型的对象。诸如Object和Array这样的原生构造函数，在运行时会自动出现在执行环境中。 此外，我们也可以创建自定义的构造函数。例如：
 
     function Person(name, age, job) {
@@ -131,7 +131,7 @@ Person的每个实例person1和person2都包含一个内部属性（通常为__p
       this.job = job;
     }
     Person.prototype = {
-      
+
       // 这里务必要重新将构造函数指回Person构造函数，否则会指向这个新创建的对象
       constructor: Person, // Attention!
       sayName: function () {
@@ -344,19 +344,19 @@ ES6中引入了一套新的关键字用来实现class。 JavaScript仍然是基�
     super(name, age, 'Student');
     this.school = school;
       }
-     
+
        saySchool () {
          console.log(this.school);
        }
-     
+
      }
-     
+
      var stu1 = new Student('weiwei', 20, 'Southeast University');
      var stu2 = new Student('lily', 22, 'Nanjing University');
-     
+
      stu1.sayName(); // weiwei
      stu1.saySchool(); // Southeast University
-     
+
      stu2.sayName(); // lily
      stu2.saySchool(); // Nanjing University`
 
@@ -387,6 +387,15 @@ super关键字用于调用父对象上的函数。 super.prop和super[expr]表�
 <font color=LightSalmon size=6 face="黑体">小结</font>
 本文对JavaScript的面向对象机制进行了较为深入的解读，尤其是构造函数和原型链方式实现对象的创建、继承、以及实例化。 此外，本文还简要介绍了如在ES6中编写面向对象代码。
 
+## References
+
+1. [详解Javascript中的Object对象](http://luopq.com/2016/02/28/Object-in-Javascript)
+1. [`new`操作符](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/new)
+1. [JavaScript面向对象简介](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Introduction_to_Object-Oriented_JavaScript)
+1. [Object.create()](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Object/create)
+1. [继承与原型链](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Inheritance_and_the_prototype_chain)
+
+** 声明：** 本文整理取自：景庄 [原文链接](http://ryanmorr.com/understanding-scope-and-context-in-javascript/)
 
 
 
