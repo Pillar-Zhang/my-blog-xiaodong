@@ -1,12 +1,12 @@
 ---
 title: this到底指的是谁？
-date: 2016-03-12 20:09:24
-tags: 普渡众生
+date:  2016-03-18 20:09:24
+tags:  知识点
 ---
 
 ![轨道][3]
 
-    初学java和javascript肯定对这个this很是苦恼，他到底指的是谁？
+            初学java和javascript肯定对这个this很是苦恼，他到底指的是谁？
 <!--more-->
 你可能经常看到这样的用法：**object.call(this,x,y,z)**那么这个call和this是什么关系呢？接下来：
 
@@ -59,7 +59,7 @@ Js 里函数调用有4种模式：方法调用、正常函数调用、构造器�
 是不是很神奇，函数 a 居然可以给 o 加属性值。当然，如果你 apply 的第一个参数传递null，那么在函数a里面this指针依然会绑定全局对象。你可能要问了，apply函数是哪来的，因为在 js 里所有的函数都有一个共同的 prototype，也就是传说中的 Function.prototype, 这个原型里有两个神奇的方法，一个就是这里的apply，另一个就是让题主疑惑的 call。
 
 说了这么一大堆，终于来到 call 了。
-call() 方法和 apply() 方法很类似，它们的存在都是为了改变 this 的绑定，那 
+call() 方法和 apply() 方法很类似，它们的存在都是为了改变 this 的绑定，那
 
 ## call() 和 apply()###
 
