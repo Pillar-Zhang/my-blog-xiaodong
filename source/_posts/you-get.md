@@ -9,7 +9,7 @@ tags: 黑科技
         you-get，强大的下载视频、图片、文件的工具。
 
 <!--more-->
-# [you-get](https://github.com/soimort/you-get)
+# <font color=MediumBlue size=5>[you-get](https://github.com/soimort/you-get)</font>
 
     $ you-get http://www.fsf.org/blogs/rms/20140407-geneva-tedx-talk-free-software-free-society
     Site:       fsf.org
@@ -20,14 +20,14 @@ tags: 黑科技
     Downloading TEDxGE2014_Stallman05_LQ.webm ...
     100.0% ( 27.1/27.1 MB) ├████████████████████████████████████████┤[1/1]   12 MB/s
 
-## you-get之功用:
+## <font color=MediumBlue size=5>you-get之功用:</font>
 
 下载流行网站之音视频，例如YouTube, Youku, Niconico,以及更多. (查看完整支持列表)
 于您心仪的媒体播放器中观看在线视频，脱离浏览器与广告
 下载您喜欢网页上的图片
 下载任何非HTML内容，例如二进制文件
 
-## 安装
+## <font color=MediumBlue size=5>安装</font>
 以下乃必要依赖，需要单独安装，除非于Windows下使用预包装包:
 
 Python 3(必须安装)
@@ -35,11 +35,12 @@ FFmpeg (强烈推荐) or Libav
 (可选) RTMPDump（至少安装一个）
 
 ** 注意：这个地方一定要√ ![图片](http://7xsgf8.com1.z0.glb.clouddn.com/image/bgyou-get%20pathon.png)
+FFmpeg点击这个：
+![](http://7xsgf8.com1.z0.glb.clouddn.com/image/bg%E5%AE%89%E8%A3%85.png)
 
 
 
-
-# 有四种安装方式，有Git工具的建议clone
+# <font color=MediumBlue size=5>有四种安装方式，有Git工具的建议clone</font>
 选项 1: 通过pip安装
 
 you-get之官方版本通过PyPI分发, 可从PyPI镜像中通过pip 包管理器安装. 须知您务必使用版本3的 pip:
@@ -73,7 +74,7 @@ exe (单独文件) 或 7z (包括所有依赖) 可 从https://github.com/soimort
 [Git](https://git-scm.com/download/)
 
 
-## 升级
+## <font color=MediumBlue size=5>升级</font>
 
 考虑到 you-get 安装方法之差异, 请使用:
 
@@ -82,9 +83,9 @@ exe (单独文件) 或 7z (包括所有依赖) 可 从https://github.com/soimort
 
     $ you-get https://github.com/soimort/you-get/archive/master.zip
 
-# 开始
+# <font color=MediumBlue size=5>开始</font>
 
-## 下载视频
+## <font color=MediumBlue size=5>下载视频</font>
 
 当观赏感兴趣之视频，您可以使用 --info/-i 以查看所有可用画质与格式、s:
 
@@ -138,7 +139,7 @@ exe (单独文件) 或 7z (包括所有依赖) 可 从https://github.com/soimort
     或，如您希望其他格式(mp4)，请使用其他提示选项:
 
     $ you-get --itag=18 'https://www.youtube.com/watch?v=jNQXAC9IVRw'
-## 注意:
+## <font color=MediumBlue size=5>注意:</font>
 
 目前，格式选择没有大规模铺开；默认选项为最高画质.
 ffmpeg为必要依赖，以下载流式视频以及合并分块视频(例如，类似Youku), 以及YouTube的1080p或更高分辨率.
@@ -170,7 +171,7 @@ ffmpeg为必要依赖，以下载流式视频以及合并分块视频(例如，�
 
     Downloading tumblr_mxhg13jx4n1sftq6do1_1280.png ...
     100.0% (  0.5/0.5  MB) ├████████████████████████████████████████┤[1/1]   22 MB/s
-## 注意:
+## <font color=MediumBlue size=5>注意:</font>
 
 此功能为测试性，远未完成。对于类似Tumblr和Blogger的大图有效，但是没有办法为所有网站建立通用格式.
 在Google Videos搜索并下载
@@ -178,7 +179,7 @@ ffmpeg为必要依赖，以下载流式视频以及合并分块视频(例如，�
 you-get可以吃任何东西. 如果不是合法的URL, you-get将在Google查找并下载最相关视频. (可能不是最心仪的，但是很有可能)
 
     $ you-get "Richard Stallman eats"
-## 暂停与恢复下载
+## <font color=MediumBlue size=5>暂停与恢复下载</font>
 
 可以使用Ctrl+C 暂停下载.
 
@@ -191,7 +192,7 @@ you-get可以吃任何东西. 如果不是合法的URL, you-get将在Google查�
 使用--output-dir/-o 设定路径, --output-filename/-O 设定输出文件名:
 
     $ you-get -o ~/Videos -O zoo.webm 'https://www.youtube.com/watch?v=jNQXAC9IVRw'
-## 提示:
+## <font color=MediumBlue size=5>提示:</font>
 
 如果原视频标题含有与系统不兼容字符，十分有效.
 也可以帮助使用脚本批量下载于指定目录和文件名.
