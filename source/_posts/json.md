@@ -4,6 +4,12 @@ date: 2016-04-05 19:24:40
 tags: 黑科技
 ---
 
+
+![json](http://7xsgf8.com1.z0.glb.clouddn.com/image/json.png)
+
+    JSON, JavaScript Object Notation, 它是一种轻量级的数据交换格式，非常适合于服务器与JavaScript的交互。
+
+
 21世纪初，Douglas Crockford寻找一种简便的数据交换格式，能够在服务器之间交换数据。当时通用的数据交换语言是XML，但是Douglas Crockford觉得XML的生成和解析都太麻烦，所以他提出了一种简化格式，也就是JSON。
 
 JSON, JavaScript Object Notation, 它是一种轻量级的数据交换格式，非常适合于服务器与JavaScript的交互。对消息通信而言，JSON的优势是比XML更简单，因而可以大大提高开发效率，代码也更为简单。
@@ -106,7 +112,7 @@ JSON在Java上的实现最常用的为Json lib， 其最新版即相关的依赖
 	http://download.csdn.net/detail/dqsweet/5246564
 </del>
 
-###POJO
+### POJO
 
 定义一个POJO类用来序列化和反序列化JSON。
 
@@ -157,7 +163,7 @@ JSON在Java上的实现最常用的为Json lib， 其最新版即相关的依赖
 	    }
 	}
 
-###GSON Demo
+### GSON Demo
 
     MyPojo pojo = new MyPojo();
     pojo.setThing1("Hello");
@@ -171,7 +177,7 @@ JSON在Java上的实现最常用的为Json lib， 其最新版即相关的依赖
     MyPojo pojo2 = gson.fromJson(json, MyPojo.class);
     System.out.println("Serialized and deserialized object are equal: " + pojo.equals(pojo2));
 
-###Jackson Demo
+### Jackson Demo
 
     MyPojo pojo = new MyPojo();
     pojo.setThing1("Hello");
@@ -191,9 +197,9 @@ JSON在Java上的实现最常用的为Json lib， 其最新版即相关的依赖
 > Modified at 11/3/2014, via Weiwei SUN
 
 
-
+#### JSON Lib
 <del>
-####JSON Lib
+
 利用JSON lib可以构建和解析json文件。具体的使用方法可以参考其官方api，这里以构建JSON对象为例，介绍JSON lib的基本使用方法：
 
 	http://www.json.org/java/
@@ -246,7 +252,7 @@ JSON在Java上的实现最常用的为Json lib， 其最新版即相关的依赖
 	}
 </del>
 
-###References
+### References
 
 1. http://www.ibm.com/developerworks/cn/web/wa-lo-json/
 2. http://www.ruanyifeng.com/blog/2009/05/data_types_and_json.html
