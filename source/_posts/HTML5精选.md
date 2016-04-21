@@ -4,6 +4,8 @@ date: 2016-04-10 20:51:00
 tags: 文章精选
 ---
 
+![](http://7xsgf8.com1.z0.glb.clouddn.com/image/html5.png)
+
 
        我不生产文章，我只是文章的搬运工。
 

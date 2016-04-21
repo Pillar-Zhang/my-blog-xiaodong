@@ -3,7 +3,7 @@ title: 黑科技：强大的you-get
 date: 2016-04-04 19:24:40
 tags: 黑科技
 ---
-![](http://7xsgf8.com1.z0.glb.clouddn.com/image/bg%E8%A7%86%E9%A2%91%E7%BD%91%E7%AB%99.jpg)
+![](http://7xsgf8.com1.z0.glb.clouddn.com/image/%E9%BB%91%E7%A7%91%E6%8A%80.jpg)
 
 
         you-get，强大的下载视频、图片、文件的工具。

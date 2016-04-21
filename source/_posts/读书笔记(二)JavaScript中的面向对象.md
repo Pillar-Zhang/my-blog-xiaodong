@@ -5,6 +5,7 @@ tags: 《JavaScript高级程序设计》
 ---
 ![湖光][1]
 
+
                       JavaScript中一切皆为对象
 
 <!--more-->
