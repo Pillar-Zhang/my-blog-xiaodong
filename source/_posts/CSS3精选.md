@@ -18,9 +18,7 @@ tags: 文章精选
 | -----|:----:| ----:|
 | [js函数编程理解](https://github.com/AutumnsWind/Good-text-Share/issues/13)  | 2016-04    | AutumnsWind    |
 | [提高你的Javascript水平](http://mp.weixin.qq.com/s?__biz=MjM5MTA1MjAxMQ==&mid=402435316&idx=1&sn=a4e50c04c0751c3e31b6bfa1c8702f8d&scene=0#wechat_redirect)    | 2016-03    |   安生、墨白   |
-| [Javascript核心特性揭秘（一）](https://www.yhspy.com/blog/126/#Javascript核心特性揭秘（一）)    | 2016-03    |  YHSPY   |
-| [Javascript核心特性揭秘（二）](https://www.yhspy.com/blog/126/#Javascript核心特性揭秘（二）)    | 2016-03    |  YHSPY   |
-| [Javascript核心特性揭秘（三）](https://www.yhspy.com/blog/128/#Javascript核心特性揭秘（三）)    | 2016-03    |  YHSPY   |
+| [Javascript核心特性揭秘系列1-3](https://www.yhspy.com/blog/126/#Javascript核心特性揭秘（一）)    | 2016-03    |  YHSPY   |
 | [CSS 语法参考](http://tympanus.net/codrops/css_reference)    | -    | -  |
 | [CSS3动画手册](http://isux.tencent.com/css3/index.html)    | -    | -  |
 | [腾讯css3动画制作工具](http://isux.tencent.com/css3/tools.html)    | -    | -  |
@@ -36,7 +34,7 @@ tags: 文章精选
 | [HTML5+CSS3 loading 效果收集](https://www.qianduan.net/free-html5-css3-loaders-preloaders/)   | 2016-01-26   |   神飞  |
 | [HTML和CSS高级指南之四——响应式设计](http://www.w3cplus.com/css/advanced-html-css-lesson4-responsive-web-design.html)  | 2013-02-21   |   D姐  |
 |  [60个有用CSS代码片段](http://www.admin10000.com/document/7059.html)  | 2016-03-12    |   ido321  |
-|    | -    |   -  |
+|  [FLEX布局的一些问题和解决方法](http://www.cnblogs.com/constantince/p/4798518.html)  | 2015-09-11    |   卖烧烤夫斯基  |
 |    | -    |   -  |
 |    | -    |   -  |
 |    | -    |   -  |
