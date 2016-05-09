@@ -29,7 +29,7 @@ tags: 文章精选
 |  [【简明教程】JavaScript面向对象编程]()  | 2016.03.28    |   技匠  |
 |  [如何优雅地写js异步代码](http://iammapping.com/write-js-async-gracefully/)  |  2016-02-02    |   iammapping   |
 |  javascript 设计模式 | 2015-03-12    |   卖烧烤夫斯基  |
-|    | -    |   -  |
+| [JavaScript 类型的那些事](https://www.sdk.cn/news/3364)   | 2016-05-05   |  有赞技术团队   |
 |    | -    |   -  |
 |    | -    |   -  |
 |    | -    |   -  |

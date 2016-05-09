@@ -24,7 +24,7 @@ tags: 文章精选
 | [React原创实战视频教程](http://www.piliyu.com)    |  -  | -    |
 |  [Vue官方API](http://cn.vuejs.org/guide/installation.html)  | -    |  vue  |
 |  [Vue构建单页应用最佳实战](https://segmentfault.com/a/1190000005009052)  | 2016-04-26    |   二哲  |
-|    | -    |   -  |
+|  [使用React、Redux和Node.js构建通用应用](http://qianduan.guru/2016/03/22/fequan-2/)  | 2016-3-19    |    Wit.ai  |
 |    | -    |   -  |
 |    | -    |   -  |
 |    | -    |   -  |
