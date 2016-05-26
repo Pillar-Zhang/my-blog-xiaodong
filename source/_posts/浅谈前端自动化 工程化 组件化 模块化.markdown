@@ -1,0 +1,299 @@
+js模块化和MVC
+　　Extjs或sencha touch这两个都是同一家公司的，也是我用到的最早的前端模块化和MVC，sencha touch我用的也是最多的，因为移动端毕竟火爆。
+
+　　说的它的好处吧：
+
+　　1.灵活架构，焦点分离 
+　　2.方便模块间组合、分解 
+　　3.方便单个模块功能调试、升级 
+　　4.多人协作互不干扰
+
+　　mvc是后端说的最多的术语，如果你现在还不懂你最好快点去恶补下，因为现在很多形形色色的前端MVC层出不穷，
+
+　　MVC开始是存在于桌面程序中的，M是指业务模型，V是指用户界面，C则是控制器，使用MVC的目的是将M和V的实现代码分离，从而使同一个程序可以使用不同的表现形式。比如一批统计数据可以分别用柱状图、饼图来表示。C存在的目的则是确保M和V的同步，一旦M改变，V应该同步更新。
+
+　　MVC 是一种使用 MVC（Model View Controller 模型-视图-控制器）设计创建 Web 应用程序的模式:
+
+Model（模型）表示应用程序核心（比如数据库记录列表）。
+View（视图）显示数据（数据库记录）。
+Controller（控制器）处理输入（写入数据库记录）。
+MVC 模式同时提供了对 HTML、CSS 和 javascript 的完全控制。
+Model（模型）是应用程序中用于处理应用程序数据逻辑的部分。
+　　通常模型对象负责在数据库中存取数据。
+View（视图）是应用程序中处理数据显示的部分。
+　　通常视图是依据模型数据创建的。
+Controller（控制器）是应用程序中处理用户交互的部分。
+　　通常控制器负责从视图读取数据，控制用户输入，并向模型发送数据。
+MVC 分层有助于管理复杂的应用程序，因为您可以在一个时间内专门关注一个方面。例如，您可以在不依赖业务逻辑的情况下专注于视图设计。同时也让应用程序的测试更加容易。
+MVC 分层同时也简化了分组开发。不同的开发人员可同时开发视图、控制器逻辑和业务逻辑。
+
+　　啰嗦一点说一下sencha这家js框架公司的好处和弊端吧，他们提供的框架有很好的样式体系，基于sass写的，可以随便我们改变样式风格，提供的sencha.cmd第一次让我感觉到了前端的工程化，提供了代码的压缩、代码验证、代码模块的依赖合并。组件丰富，说了这么多大家感觉一定很爽吧。但是由于他提供非常多的组件，所以导致js代码过多，虽然有些我们可以自行配置筛选压缩，它的依赖压缩不是全部根据配置，大部门和文件夹里面的文件有关，必须不停的移除或添加，反正就是很麻烦，特别是版本的升级时候，真是想吐了。有时因为压缩的缘故还会报一些下错。
+
+AMD和CMD时代
+ 　　说来前面的大框架我们一定想用到更加轻便的模块框架了，这个时候一定要说说两派的代表框架RequireJS和SeaJs，引用一下github上的专业术语吧，个人也经过一段时间的验证。
+
+相同之处
+
+RequireJS 和 Sea.js 都是模块加载器，倡导模块化开发理念，核心价值是让 JavaScript 的模块化开发变得简单自然。
+
+不同之处
+
+两者的主要区别如下：
+
+定位有差异。RequireJS 想成为浏览器端的模块加载器，同时也想成为 Rhino / Node 等环境的模块加载器。Sea.js 则专注于 Web 浏览器端，同时通过 Node 扩展的方式可以很方便跑在 Node 环境中。
+
+遵循的规范不同。RequireJS 遵循 AMD（异步模块定义）规范，Sea.js 遵循 CMD （通用模块定义）规范。规范的不同，导致了两者 API 不同。Sea.js 更贴近 CommonJS Modules/1.1 和 Node Modules 规范。
+
+推广理念有差异。RequireJS 在尝试让第三方类库修改自身来支持 RequireJS，目前只有少数社区采纳。Sea.js 不强推，采用自主封装的方式来“海纳百川”，目前已有较成熟的封装策略。
+
+对开发调试的支持有差异。Sea.js 非常关注代码的开发调试，有 nocache、debug 等用于调试的插件。RequireJS 无这方面的明显支持。
+
+插件机制不同。RequireJS 采取的是在源码中预留接口的形式，插件类型比较单一。Sea.js 采取的是通用事件机制，插件类型更丰富。
+
+总之，如果说 RequireJS 是 Prototype 类库的话，则 Sea.js 致力于成为 jQuery 类库。
+
+webpack时代
+　　Seajs我没怎么用过项目，所以也就不说了，RequireJS 用过，那时候用的.net的mvc5.0中的一个第三方插件，帮我省去了很多的配置文件，因为如果我们用nodejs的话一般要自己书写R.js，用来配置一些处理流程，强大的.net插件帮我省去了好多，可是每个模块你都的定义，并且在配置文件中书写出来，每个模块都要写初始模块定义，为什么我会这么去说话一个框架了，因为不断的学习用到了更好的webpack，以下是我的观点（有些解释术语参考了其它博客）
+
+说说一下webpack的优点吧：
+
+1.require.js的所有功能它都有
+2.编绎过程更快，因为require.js会去处理不需要的文件
+3.还有一个额外的好处就是你不需要再做一个封装的函数，require.js中你得这样
+
+define(['jquery'], function(jquery){})
+4.现在你需要一个很大的封装去定义每个模块，然后你需要在在require.js的配制文件中将每个模块的路径都配出来，用过requirejs都会遇到的好繁琐
+
+
+require.config({
+    baseUrl: '/scripts',
+    paths: {
+        'facebook'          : '//connect.facebook.net/en_US/all',
+        // 'facebook'       : '//connect.facebook.net/en_US/sdk/debug'
+        'requirejs'         : '../bower_components/requirejs/require',
+        'react'             : '../bower_components/react/react-with-addons',
+        'underscore'        : '../bower_components/lodash/dist/lodash',
+        'futures-requirejs' : '../bower_components/futures-requirejs/future',
+        'jquery'            : '../bower_components/jquery/jquery',
+        // 'phaser'         : '../bower_components/phaser/build/phaser',
+        'phaser.filters'    : '../bower_components/phaser/filters/',
+        'phaser'            : '../thirdParty/phaser/Phaser',
+        'snap'              : '../bower_components/Snap.svg/dist/snap.svg',
+        'proton'            : '../thirdParty/Proton',
+        'copyProperties'    : '../thirdParty/copyProperties',
+        'flux'              : '../bower_components/flux/dist/Flux',
+        'eventEmitter'      : '../bower_components/eventEmitter/EventEmitter',
+        'pixi'              : '../bower_components/pixi/bin/pixi',
+        'crossroads'        : '../bower_components/crossroads/dist/crossroads',
+        'signals'           : '../bower_components/js-signals/dist/signals',
+        'hasher'            : '../bower_components/hasher/dist/js/hasher',
+        'async'             : '../bower_components/async/lib/async',
+        'socket.io-client'  : '../bower_components/socket.io-client/dist/socket.io',
+        'html2canvas'       : '../bower_components/html2canvas/build/html2canvas.min',
+        'hammer'            : '../bower_components/hammerjs/hammer',
+        'touch-emulator'    : '../bower_components/hammer-touchemulator/touch-emulator',
+        'moment'            : '../bower_components/moment/moment',
+        // 'famous'         : '../bower_components/famous',
+        'tinygradient'      : '../bower_components/tinygradient/tinygradient',
+        'page'              : '../bower_components/page/index',
+        // 'faker'          : '../bower_components/faker/dist/faker',
+        'faker'             : '../thirdParty/Faker',
+        'perlin'            : '../thirdParty/Perlin',
+        'tinycolor'         : '../vendors/tinycolor',
+        // 'flux'           : '../../node_modules/flux/index',
+        'client'            : './',
+        'errors'            : './errors',
+        'server'            : '../../server',
+    },
+    packages: [{
+        name     : 'API2',
+        location : '../bower_components/api2/src/',
+        main     : 'API'
+    }],
+    shim: {
+        'phaser.filters/Fire': {
+            deps: ['phaser'],
+        },
+        'page': {
+            exports: 'page'
+        },
+        'snap' : {
+            exports: 'Snap'
+        },
+        'html2canvas' : {
+            exports: 'html2canvas'
+        },
+        'facebook' : {
+            exports: 'FB'
+        },
+        // 'underscore': {
+        //     deps: [],
+        //     exports: '_'
+        // },
+        'phaser': {
+            exports: 'Phaser'
+        },
+        'pixi': {
+            exports: 'PIXI'
+        },
+        'hammer': {
+            exports: 'Hammer'
+        },
+        'touch-emulator': {
+            exports: 'TouchEmulator'
+        },
+        'proton': {
+            exports: 'Proton'
+        },
+        'moment': {
+            exports: 'moment'
+        }
+    }
+});
+View Code
+ 
+
+以下是webpack的一个文件配置，
+
+
+var path = require("path");
+var webpack = require("webpack");
+var ExtractTextPlugin = require("extract-text-webpack-plugin")
+
+module.exports = {
+  // context: path.join(__dirname),
+  entry: {
+    index: './app/scripts/index.js',
+    page1: './app/scripts/page1.js',
+    page3: './app/scripts/page3.js'
+  },
+  output: {
+    path: path.join(__dirname, '_dist'),
+    filename: './scripts/[name]-bundle.js',
+    chunkFilename: "./scripts/[id]-chunk.js",
+   // library:'appConfig'  //主要应用jsonp命名重新定义
+  },
+  module: {
+    loaders: [{
+        test: /\.css$/,
+        loader: ExtractTextPlugin.extract("style-loader", "css-loader")
+      }, {
+        test: /\.less$/,
+        loader: 'style-loader!css-loader!less-loader'
+      }, {
+        test: /\.woff$/,
+        loader: 'url-loader?prefix=font/&limit=5000'
+      }, {
+        test: /\.js$/,
+        exclude: /node_modules/,
+        loader: 'babel-loader',
+        query: {
+          compact: false
+        }
+      }
+    ]
+  },
+  'html-minify-loader': {
+    empty: true, // KEEP empty attributes
+    cdata: true, // KEEP CDATA from scripts
+    comments: true // KEEP comments
+  },
+  resolve: {
+    root: [path.join(__dirname, "bower_components"), path.join(__dirname, 'app', 'scripts')],
+  },
+  plugins: [
+    new webpack.optimize.CommonsChunkPlugin({
+      name: "commons",
+      filename: "./scripts/commons.js",
+      chunks: ["page1", "page2", "page3"]
+    }),
+    new ExtractTextPlugin("./styles/[name].css"),
+    new webpack.ResolverPlugin(
+      new webpack.ResolverPlugin.DirectoryDescriptionFilePlugin("bower.json", ["main"])
+    )
+  ]
+};
+View Code
+ 
+
+我们可以发现少了好多引用模块js文件路径引用，可能会有人问，它怎么知道我要引用那些js，在nodejs里有一个有趣的插件brower（这东西你如果没有用到，你老板可能会说你还是一个初级菜鸟）
+
+Bower 是Twitter 推出的一款包管理工具，基于nodejs的模块化思想，把功能分散到各个模块中，让模块和模块之间存在联系，通过 Bower 来管理模块间的这种联系
+
+包管理工具一般有以下的功能：
+
+注册机制：每个包需要确定一个唯一的 ID 使得搜索和下载的时候能够正确匹配，所以包管理工具需要维护注册信息，可以依赖其他平台。
+文件存储：确定文件存放的位置，下载的时候可以找到，当然这个地址在网络上是可访问的。
+上传下载：这是工具的主要功能，能提高包使用的便利性。比如想用 jquery 只需要 install 一下就可以了，不用到处找下载。上传并不是必备的，根据文件存储的位置而定，但需要有一定的机制保障。
+依赖分析：这也是包管理工具主要解决的问题之一，既然包之间是有联系的，那么下载的时候就需要处理他们之间的依赖。下载一个包的时候也需要下载依赖的包
+
+可能会有人会问，我虽然将这些包下了下来，那我还是不知道那些模块位置，我该如果引用了，webpack一个插件轻松解决这个问题：以下是配置文件
+
+resolve: {
+　　root: [path.join(__dirname, "bower_components"), path.join(__dirname, 'app', 'scripts')],
+},
+plugins: [
+　　new webpack.ResolverPlugin(
+　　　　new webpack.ResolverPlugin.DirectoryDescriptionFilePlugin("bower.json", ["main"])
+　　)
+]
+
+ 
+
+那如果调用了
+
+var $ = require("jquery");
+ 
+
+是不是感觉很方便了，还有一些新手可能会吐槽，js本来就是弱类型语言，框架那么多，智能提示是不是很差，特别是玩微软那套玩多了的人一定会问，在此推荐以下webstorm、sublime、atom它们上面的插件还是不错的
+
+5.requirejs它是异步依赖加载的，说白了就是，只要你用到了，它绝对会一次性加载完，就算你初始化没有用到，它也会加载，如果你把它压缩，文件就好大了，最后就一个文件。你也可以破坏它的原则，按传统的写法单独加载，不过就整体就不是很美观了。可能有些解决的插件，我没用到也是有可能的，这里也就不多说了。
+
+webpakc就很好解决了，它提供的插件可以自动分析，根据你提过js文件主入口，自动分析，可合成多个js文件，但是它不会全部加载，按照你的需要一次加载，这样就不会出现页面刚初始化就加载不必要的js文件，提高页面速度（虽然可以靠用体力解决，说白了就是注意写法，不过好痛苦）
+
+以上是它们的对比，再说说它的私有特性吧
+
+1. 对 CommonJS 、 AMD 、ES6的语法做了兼容
+2. 对js、css、图片等资源文件都支持打包（css都可以合成多个css文件包，好爽，再也不是sb似的全部加载了，sass和less虽然也是模块化的加载合并，可是css和js分离的关联不大，这里的css可以和js有更大的关联，更细致区分加载的js）
+3. 串联式模块加载器以及插件机制，让其具有更好的灵活性和扩展性，例如提供对CoffeeScript、ES6的支持
+4. 有独立的配置文件webpack.config.js
+5. 可以将代码切割成不同的chunk，实现按需加载，降低了初始化时间
+6. 支持 SourceUrls 和 SourceMaps，易于调试
+7. 具有强大的Plugin接口，大多是内部插件，使用起来比较灵活
+8.webpack 使用异步 IO 并具有多级缓存。这使得 webpack 很快且在增量编译上更加快
+
+在补充一个特别的属性吧
+
+双服务器模式
+
+项目开发中，仅有一台静态服务器是不能满足需求的，我们需要另启一台web服务器，且将静态服务器集成到web服务器中，就可以使用webpack的打包和加载功能。我们只需要修改一下配置文件就可以实现服务器的集成。
+
+ entry: [
+    './src/page/main.js',
+    'webpack/hot/dev-server',
+    'webpack-dev-server/client?http://127.0.0.1:8080'
+  ]
+  output: {
+    path: __dirname,
+    filename: '[name].js',
+    publicPath: "http://127.0.0.1:8080/assets/"
+  }
+  plugins: [
+    new webpack.HotModuleReplacementPlugin()
+  ]
+如果在开发中启动两个服务器并不是一个很好地选择，webpack提供了一个中间件webpack-dev-middleware，但其只能在生产环境中使用，可以实现在内存中实时打包生成虚拟文件，供浏览器访问以及调试。使用方式如下：
+
+var webpackDevMiddleware = require("webpack-dev-middleware");
+var webpack = require("webpack");
+
+var compiler = webpack({
+    // configuration
+    output: { path: '/' }
+});
+
+app.use(webpackDevMiddleware(compiler, {
+    // options
+}));
+　　有些好处可能没有说到，webpack可能过几年它就会被取代也是有可能，但是现在如果你说你不会，那就请赶快恶补吧，它会带你飞的。
+
+以上分析结合自己工作经验之谈，有些可能说大呢，说错了大家就一笑而过，不对的地方也希望诚恳指出。
