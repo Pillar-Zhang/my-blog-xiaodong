@@ -1,299 +1,141 @@
-js模块化和MVC
-　　Extjs或sencha touch这两个都是同一家公司的，也是我用到的最早的前端模块化和MVC，sencha touch我用的也是最多的，因为移动端毕竟火爆。
+---
+title: 浅谈前端架构的工程化、模块化、组件化、规范化
+date: 2016-05-20 23:51:00
+tags: 文章精选
+---
 
-　　说的它的好处吧：
+![](http://7xsgf8.com1.z0.glb.clouddn.com/%E5%89%8D%E7%AB%AF%E5%B7%A5%E7%A8%8B%E5%8C%96.jpeg)
 
-　　1.灵活架构，焦点分离 
-　　2.方便模块间组合、分解 
-　　3.方便单个模块功能调试、升级 
-　　4.多人协作互不干扰
 
-　　mvc是后端说的最多的术语，如果你现在还不懂你最好快点去恶补下，因为现在很多形形色色的前端MVC层出不穷，
+       架构的目的是什么？答案是提升质量和效率。
 
-　　MVC开始是存在于桌面程序中的，M是指业务模型，V是指用户界面，C则是控制器，使用MVC的目的是将M和V的实现代码分离，从而使同一个程序可以使用不同的表现形式。比如一批统计数据可以分别用柱状图、饼图来表示。C存在的目的则是确保M和V的同步，一旦M改变，V应该同步更新。
+<!--more-->
 
-　　MVC 是一种使用 MVC（Model View Controller 模型-视图-控制器）设计创建 Web 应用程序的模式:
+一个项目组成分为 前端，服务端。传统的前端项目用三剑客 javascript html css 就传统的项目结构已经不能满足日益壮大的大型应用的需求了。现在前端的生态圈很繁荣，各种框架，组件的出现。让前端发展迅速，快速开发已经成为了前端的一个标准。如果你想构建一个易维护，代码简洁，性能优化程度高的项目就离不开前端的架构。这也就解疑了架构是不是必须的？
 
-Model（模型）表示应用程序核心（比如数据库记录列表）。
-View（视图）显示数据（数据库记录）。
-Controller（控制器）处理输入（写入数据库记录）。
-MVC 模式同时提供了对 HTML、CSS 和 javascript 的完全控制。
-Model（模型）是应用程序中用于处理应用程序数据逻辑的部分。
-　　通常模型对象负责在数据库中存取数据。
-View（视图）是应用程序中处理数据显示的部分。
-　　通常视图是依据模型数据创建的。
-Controller（控制器）是应用程序中处理用户交互的部分。
-　　通常控制器负责从视图读取数据，控制用户输入，并向模型发送数据。
-MVC 分层有助于管理复杂的应用程序，因为您可以在一个时间内专门关注一个方面。例如，您可以在不依赖业务逻辑的情况下专注于视图设计。同时也让应用程序的测试更加容易。
-MVC 分层同时也简化了分组开发。不同的开发人员可同时开发视图、控制器逻辑和业务逻辑。
+**架构的目的是什么？答案是提升质量和效率。**
 
-　　啰嗦一点说一下sencha这家js框架公司的好处和弊端吧，他们提供的框架有很好的样式体系，基于sass写的，可以随便我们改变样式风格，提供的sencha.cmd第一次让我感觉到了前端的工程化，提供了代码的压缩、代码验证、代码模块的依赖合并。组件丰富，说了这么多大家感觉一定很爽吧。但是由于他提供非常多的组件，所以导致js代码过多，虽然有些我们可以自行配置筛选压缩，它的依赖压缩不是全部根据配置，大部门和文件夹里面的文件有关，必须不停的移除或添加，反正就是很麻烦，特别是版本的升级时候，真是想吐了。有时因为压缩的缘故还会报一些下错。
+在没有架构的情况下：举个例子：一个程序员来写各个页面，但是不同的人写代码风格不一样，代码也有很多缺陷，甚至低级的bug。很难更新项目用到的技术。如果滥用组件库和各种框架就会导致项目体积的臃肿，很难和前端新出现的技术接轨，没办法跟上新规范。新技术无法得到引入，技术无法统一，使得团队的整体技术能力无法得到提升，也无法提供技术上的通用解决方案，从团队的角度来考量的话，效率是非常低下的。
 
-AMD和CMD时代
- 　　说来前面的大框架我们一定想用到更加轻便的模块框架了，这个时候一定要说说两派的代表框架RequireJS和SeaJs，引用一下github上的专业术语吧，个人也经过一段时间的验证。
+同时，因为技术过于陈旧，再加上代码没有统一规范，导致碰到页面业务逻辑比较复杂，或者对老页面进行维护的时候，产生Bug的概率非常高，产品质量堪忧
 
-相同之处
+**那应该怎么进行架构呢？架构的目的是制定标准，提升质量和效率。**
 
-RequireJS 和 Sea.js 都是模块加载器，倡导模块化开发理念，核心价值是让 JavaScript 的模块化开发变得简单自然。
+•  架构是一个抽象的过程，它是架构师根据自己的经验对大量具体的业务项目进行分析，发现其中的规律，抽象出具体的规范，最终又应用于具体的业务项目中去。比如常说的MVVM就是一种规范。
 
-不同之处
+•  要把跟业务无关的问题都在架构层面处理掉。比如代码压缩，打包这种工程化的问题都要在架构层面统一解决的。要做到业务的归业务，架构的归架构。
 
-两者的主要区别如下：
+•  架构要考虑到可以方便团队成员提供和使用通用技术解决方案。比如分页组件这种。
 
-定位有差异。RequireJS 想成为浏览器端的模块加载器，同时也想成为 Rhino / Node 等环境的模块加载器。Sea.js 则专注于 Web 浏览器端，同时通过 Node 扩展的方式可以很方便跑在 Node 环境中。
+•  架构设计的时候要综合考虑当前的主流技术跟自己业务系统的实际情况。因为前端正处在高速发展，各种新技术，工具，插件，框架层出不穷，要结合项目实际情况运用已经成熟的技术，避免跳坑。。
 
-遵循的规范不同。RequireJS 遵循 AMD（异步模块定义）规范，Sea.js 遵循 CMD （通用模块定义）规范。规范的不同，导致了两者 API 不同。Sea.js 更贴近 CommonJS Modules/1.1 和 Node Modules 规范。
+**合理的架构应该是怎么样的？概括几点就是：模块化，组件化，工程化，规范化。**
 
-推广理念有差异。RequireJS 在尝试让第三方类库修改自身来支持 RequireJS，目前只有少数社区采纳。Sea.js 不强推，采用自主封装的方式来“海纳百川”，目前已有较成熟的封装策略。
+# 1、浅谈工程化
 
-对开发调试的支持有差异。Sea.js 非常关注代码的开发调试，有 nocache、debug 等用于调试的插件。RequireJS 无这方面的明显支持。
+工程化就像是百叶箱一样，减少人的操作，把工作所需要的工具做到的标准化，工作的流程做到的标准化。同时把很多重复的工作交给了代码来做，保证高质，标准统一。
 
-插件机制不同。RequireJS 采取的是在源码中预留接口的形式，插件类型比较单一。Sea.js 采取的是通用事件机制，插件类型更丰富。
+先从工具入手，工程化包括哪些方面：
+• 模块化与组件化: npm, es6,seajs, react/angularjs/Vue
+• 代码版本管理: git
+• 代码风格管理: jscs, editorconfig
+• 代码编译: babel, less,sass,scss, imgmin, csssprit, inline-svg
+• 代码质量管理 (QA): eslint, mocha
+• 代码构建: webpack
+• 项目脚手架: yeoman
+• 持续集成/持续交付/持续部署: jenkins
+• 本地化与国际化
 
-总之，如果说 RequireJS 是 Prototype 类库的话，则 Sea.js 致力于成为 jQuery 类库。
+**进行工程化：**
+•  在配置初始项目文件结构和基本文件依靠命令行（工具）自动生成。
+• 确定代码规范，缩进，换行，以及各种预编译工具less，coffee，保证输出代码的标准一致
+•  对JS文件是否规范化，进行单元测试，不用手动复制到jshint上去检测，现在配置grunt监听文件变动自动检验显示检验结果还可以通过配置构建工具自动刷新浏览器实现文件实时变动监听。
+•  以前压缩合并文件用手工复制到压缩工具然后复制到一个文件里面，现在配置一下 grunt，gulp可以做自动任务，实时编译，并且监测文件改变而做出响应。
+•  以前发布到服务器上，要手动使用 FTP 软件上传，现在也可以用工具自动打包上传。
 
-webpack时代
-　　Seajs我没怎么用过项目，所以也就不说了，RequireJS 用过，那时候用的.net的mvc5.0中的一个第三方插件，帮我省去了很多的配置文件，因为如果我们用nodejs的话一般要自己书写R.js，用来配置一些处理流程，强大的.net插件帮我省去了好多，可是每个模块你都的定义，并且在配置文件中书写出来，每个模块都要写初始模块定义，为什么我会这么去说话一个框架了，因为不断的学习用到了更好的webpack，以下是我的观点（有些解释术语参考了其它博客）
+# 2、浅谈模块化
 
-说说一下webpack的优点吧：
+通行的JavaScript模块规范主要有两种：CommonJS和AMD
 
+## CommonJS
+我们先从CommonJS谈起，因为在网页端没有模块化编程只是页面JavaScript逻辑复杂，但也可以工作下去，在服务器端却一定要有模块，所以虽然JavaScript在web端发展这么多年，第一个流行的模块化规范却由服务器端的JavaScript应用带来，CommonJS规范是由NodeJS发扬光大，这标志着JavaScript模块化编程正式登上舞台。
+
+**-定义模块**
+根据CommonJS规范，一个单独的文件就是一个模块。每一个模块都是一个单独的作用域，也就是说，在该模块内部定义的变量，无法被其他模块读取，除非定义为global对象的属性。
+
+**-模块输出**
+模块只有一个出口，module.exports对象，我们需要把模块希望输出的内容放入该对象。
+
+**-加载模块**
+加载模块使用require方法，该方法读取一个文件并执行，返回文件内部的module.exports对象。
+
+不同的实现对require时的路径有不同要求，一般情况可以省略js拓展名，可以使用相对路径，也可以使用绝对路径，甚至可以省略路径直接使用模块名（前提是该模块是系统内置模块）
+
+## AMD
+AMD 即Asynchronous Module Definition，中文名是异步模块定义的意思
+requireJS主要解决两个问题
+
+1、多个js文件可能有依赖关系，被依赖的文件需要早于依赖它的文件加载到浏览器
+2、js加载的时候浏览器会停止页面渲染，加载文件越多，页面失去响应时间越长
+
+## CMD
+CMD 即Common Module Definition通用模块定义，CMD规范是国内发展出来的，就像AMD有个requireJS，CMD有个浏览器的实现SeaJS，SeaJS要解决的问题和requireJS一样，只不过在模块定义方式和模块加载（可以说运行、解析）时机上有所不同
+
+**AMD与CMD区别**
+最明显的区别就是在模块定义时对依赖的处理不同
+
+1、AMD推崇依赖前置，在定义模块的时候就要声明其依赖的模块
+2、CMD推崇异步依赖加载的，只有在用到某个模块的时候再去require
+AMD和CMD最大的区别是对依赖模块的执行时机处理不同，注意不是加载的时机或者方式不同。很多人说requireJS是异步加载模块，SeaJS是同步加载模块，这么理解实际上是不准确的，其实加载模块都是异步的，只不过AMD依赖前置，js可以方便知道依赖模块是谁，立即加载，而CMD就近依赖，需要使用把模块变为字符串解析一遍才知道依赖了那些模块，这也是很多人诟病CMD的一点，牺牲性能来带来开发的便利性，实际上解析模块用的时间短到可以忽略。
+
+具体模块化比较可以查看:[前端模块化](http://www.cnblogs.com/dolphinX/p/4381855.html)
+
+## webpack时代
+
+**webpack的优点：**
 1.require.js的所有功能它都有
 2.编绎过程更快，因为require.js会去处理不需要的文件
 3.还有一个额外的好处就是你不需要再做一个封装的函数，require.js中你得这样
-
-define(['jquery'], function(jquery){})
+        define(['jquery'], function(jquery){})
 4.现在你需要一个很大的封装去定义每个模块，然后你需要在在require.js的配制文件中将每个模块的路径都配出来，用过requirejs都会遇到的好繁琐
 
-
-require.config({
-    baseUrl: '/scripts',
-    paths: {
-        'facebook'          : '//connect.facebook.net/en_US/all',
-        // 'facebook'       : '//connect.facebook.net/en_US/sdk/debug'
-        'requirejs'         : '../bower_components/requirejs/require',
-        'react'             : '../bower_components/react/react-with-addons',
-        'underscore'        : '../bower_components/lodash/dist/lodash',
-        'futures-requirejs' : '../bower_components/futures-requirejs/future',
-        'jquery'            : '../bower_components/jquery/jquery',
-        // 'phaser'         : '../bower_components/phaser/build/phaser',
-        'phaser.filters'    : '../bower_components/phaser/filters/',
-        'phaser'            : '../thirdParty/phaser/Phaser',
-        'snap'              : '../bower_components/Snap.svg/dist/snap.svg',
-        'proton'            : '../thirdParty/Proton',
-        'copyProperties'    : '../thirdParty/copyProperties',
-        'flux'              : '../bower_components/flux/dist/Flux',
-        'eventEmitter'      : '../bower_components/eventEmitter/EventEmitter',
-        'pixi'              : '../bower_components/pixi/bin/pixi',
-        'crossroads'        : '../bower_components/crossroads/dist/crossroads',
-        'signals'           : '../bower_components/js-signals/dist/signals',
-        'hasher'            : '../bower_components/hasher/dist/js/hasher',
-        'async'             : '../bower_components/async/lib/async',
-        'socket.io-client'  : '../bower_components/socket.io-client/dist/socket.io',
-        'html2canvas'       : '../bower_components/html2canvas/build/html2canvas.min',
-        'hammer'            : '../bower_components/hammerjs/hammer',
-        'touch-emulator'    : '../bower_components/hammer-touchemulator/touch-emulator',
-        'moment'            : '../bower_components/moment/moment',
-        // 'famous'         : '../bower_components/famous',
-        'tinygradient'      : '../bower_components/tinygradient/tinygradient',
-        'page'              : '../bower_components/page/index',
-        // 'faker'          : '../bower_components/faker/dist/faker',
-        'faker'             : '../thirdParty/Faker',
-        'perlin'            : '../thirdParty/Perlin',
-        'tinycolor'         : '../vendors/tinycolor',
-        // 'flux'           : '../../node_modules/flux/index',
-        'client'            : './',
-        'errors'            : './errors',
-        'server'            : '../../server',
-    },
-    packages: [{
-        name     : 'API2',
-        location : '../bower_components/api2/src/',
-        main     : 'API'
-    }],
-    shim: {
-        'phaser.filters/Fire': {
-            deps: ['phaser'],
-        },
-        'page': {
-            exports: 'page'
-        },
-        'snap' : {
-            exports: 'Snap'
-        },
-        'html2canvas' : {
-            exports: 'html2canvas'
-        },
-        'facebook' : {
-            exports: 'FB'
-        },
-        // 'underscore': {
-        //     deps: [],
-        //     exports: '_'
-        // },
-        'phaser': {
-            exports: 'Phaser'
-        },
-        'pixi': {
-            exports: 'PIXI'
-        },
-        'hammer': {
-            exports: 'Hammer'
-        },
-        'touch-emulator': {
-            exports: 'TouchEmulator'
-        },
-        'proton': {
-            exports: 'Proton'
-        },
-        'moment': {
-            exports: 'moment'
-        }
-    }
-});
-View Code
- 
-
-以下是webpack的一个文件配置，
-
-
-var path = require("path");
-var webpack = require("webpack");
-var ExtractTextPlugin = require("extract-text-webpack-plugin")
-
-module.exports = {
-  // context: path.join(__dirname),
-  entry: {
-    index: './app/scripts/index.js',
-    page1: './app/scripts/page1.js',
-    page3: './app/scripts/page3.js'
-  },
-  output: {
-    path: path.join(__dirname, '_dist'),
-    filename: './scripts/[name]-bundle.js',
-    chunkFilename: "./scripts/[id]-chunk.js",
-   // library:'appConfig'  //主要应用jsonp命名重新定义
-  },
-  module: {
-    loaders: [{
-        test: /\.css$/,
-        loader: ExtractTextPlugin.extract("style-loader", "css-loader")
-      }, {
-        test: /\.less$/,
-        loader: 'style-loader!css-loader!less-loader'
-      }, {
-        test: /\.woff$/,
-        loader: 'url-loader?prefix=font/&limit=5000'
-      }, {
-        test: /\.js$/,
-        exclude: /node_modules/,
-        loader: 'babel-loader',
-        query: {
-          compact: false
-        }
-      }
-    ]
-  },
-  'html-minify-loader': {
-    empty: true, // KEEP empty attributes
-    cdata: true, // KEEP CDATA from scripts
-    comments: true // KEEP comments
-  },
-  resolve: {
-    root: [path.join(__dirname, "bower_components"), path.join(__dirname, 'app', 'scripts')],
-  },
-  plugins: [
-    new webpack.optimize.CommonsChunkPlugin({
-      name: "commons",
-      filename: "./scripts/commons.js",
-      chunks: ["page1", "page2", "page3"]
-    }),
-    new ExtractTextPlugin("./styles/[name].css"),
-    new webpack.ResolverPlugin(
-      new webpack.ResolverPlugin.DirectoryDescriptionFilePlugin("bower.json", ["main"])
-    )
-  ]
-};
-View Code
- 
-
-我们可以发现少了好多引用模块js文件路径引用，可能会有人问，它怎么知道我要引用那些js，在nodejs里有一个有趣的插件brower（这东西你如果没有用到，你老板可能会说你还是一个初级菜鸟）
-
-Bower 是Twitter 推出的一款包管理工具，基于nodejs的模块化思想，把功能分散到各个模块中，让模块和模块之间存在联系，通过 Bower 来管理模块间的这种联系
-
-包管理工具一般有以下的功能：
-
-注册机制：每个包需要确定一个唯一的 ID 使得搜索和下载的时候能够正确匹配，所以包管理工具需要维护注册信息，可以依赖其他平台。
-文件存储：确定文件存放的位置，下载的时候可以找到，当然这个地址在网络上是可访问的。
-上传下载：这是工具的主要功能，能提高包使用的便利性。比如想用 jquery 只需要 install 一下就可以了，不用到处找下载。上传并不是必备的，根据文件存储的位置而定，但需要有一定的机制保障。
-依赖分析：这也是包管理工具主要解决的问题之一，既然包之间是有联系的，那么下载的时候就需要处理他们之间的依赖。下载一个包的时候也需要下载依赖的包
-
-可能会有人会问，我虽然将这些包下了下来，那我还是不知道那些模块位置，我该如果引用了，webpack一个插件轻松解决这个问题：以下是配置文件
-
-resolve: {
-　　root: [path.join(__dirname, "bower_components"), path.join(__dirname, 'app', 'scripts')],
-},
-plugins: [
-　　new webpack.ResolverPlugin(
-　　　　new webpack.ResolverPlugin.DirectoryDescriptionFilePlugin("bower.json", ["main"])
-　　)
-]
-
- 
-
-那如果调用了
-
-var $ = require("jquery");
- 
-
-是不是感觉很方便了，还有一些新手可能会吐槽，js本来就是弱类型语言，框架那么多，智能提示是不是很差，特别是玩微软那套玩多了的人一定会问，在此推荐以下webstorm、sublime、atom它们上面的插件还是不错的
-
-5.requirejs它是异步依赖加载的，说白了就是，只要你用到了，它绝对会一次性加载完，就算你初始化没有用到，它也会加载，如果你把它压缩，文件就好大了，最后就一个文件。你也可以破坏它的原则，按传统的写法单独加载，不过就整体就不是很美观了。可能有些解决的插件，我没用到也是有可能的，这里也就不多说了。
-
-webpakc就很好解决了，它提供的插件可以自动分析，根据你提过js文件主入口，自动分析，可合成多个js文件，但是它不会全部加载，按照你的需要一次加载，这样就不会出现页面刚初始化就加载不必要的js文件，提高页面速度（虽然可以靠用体力解决，说白了就是注意写法，不过好痛苦）
-
-以上是它们的对比，再说说它的私有特性吧
+**对比requirejs seajs webpack特有的属性：**
 
 1. 对 CommonJS 、 AMD 、ES6的语法做了兼容
-2. 对js、css、图片等资源文件都支持打包（css都可以合成多个css文件包，好爽，再也不是sb似的全部加载了，sass和less虽然也是模块化的加载合并，可是css和js分离的关联不大，这里的css可以和js有更大的关联，更细致区分加载的js）
+2. 对js、css、图片等资源文件都支持打包（css都可以合成多个css文件包，sass和less虽然也是模块化的加载合并，可是css和js分离的关联不大，这里的css可以和js有更大的关联，更细致区分加载的js）
 3. 串联式模块加载器以及插件机制，让其具有更好的灵活性和扩展性，例如提供对CoffeeScript、ES6的支持
 4. 有独立的配置文件webpack.config.js
 5. 可以将代码切割成不同的chunk，实现按需加载，降低了初始化时间
 6. 支持 SourceUrls 和 SourceMaps，易于调试
 7. 具有强大的Plugin接口，大多是内部插件，使用起来比较灵活
 8.webpack 使用异步 IO 并具有多级缓存。这使得 webpack 很快且在增量编译上更加快
+9.双服务器模式
 
-在补充一个特别的属性吧
+# 3、浅谈组件化
+保证组件的封闭性。因为JS方面是模块化的。组件的功能界限问题。也就是什么是应该在组件内部实现，什么是应该由组件的调用者来实现的。对组件功能界限的定义是只负责UI相关的功能，所有的业务逻辑都是从调用者传递过的。也即是写在param.js。所以param.js文件是非常重要的一个文件，里面基本包涵了这个页面所有业务处理逻辑。很显然，随着页面业务逻辑变的复杂，js文件将会变得越来越大。没关系，把不同的组件参数分拆到不同的js文件里面去实现，然后建个专门的文件夹把它们组织起来。
 
-双服务器模式
+# 4、浅谈规范化
+ 项目目录结构非常清晰。当进行开发的时候，哪些代码应该放到哪里都进行了明确的规定，并且每个文件的功能都尽量清晰并且单一。
+ 比如：
 
-项目开发中，仅有一台静态服务器是不能满足需求的，我们需要另启一台web服务器，且将静态服务器集成到web服务器中，就可以使用webpack的打包和加载功能。我们只需要修改一下配置文件就可以实现服务器的集成。
+**顶层目录结构如下图：**
+![](http://7xsgf8.com1.z0.glb.clouddn.com/%E7%9B%AE%E5%BD%951.webp)
+1、src文件夹存放的是所有的的源代码和其他静态资源（比如图片，iconfont)。
+2、dist文件夹存放的是所有编译后的代码。
+3、build文件夹存放的是所有工程化所需要的代码。
+4、document文件夹当然存放的文档。
 
- entry: [
-    './src/page/main.js',
-    'webpack/hot/dev-server',
-    'webpack-dev-server/client?http://127.0.0.1:8080'
-  ]
-  output: {
-    path: __dirname,
-    filename: '[name].js',
-    publicPath: "http://127.0.0.1:8080/assets/"
-  }
-  plugins: [
-    new webpack.HotModuleReplacementPlugin()
-  ]
-如果在开发中启动两个服务器并不是一个很好地选择，webpack提供了一个中间件webpack-dev-middleware，但其只能在生产环境中使用，可以实现在内存中实时打包生成虚拟文件，供浏览器访问以及调试。使用方式如下：
+**下面重点看下src目录结构，如下图：**
+![](http://7xsgf8.com1.z0.glb.clouddn.com/%E8%A7%84%E8%8C%83%E5%8C%96%E7%9B%AE%E5%BD%95.webp)
+1、app文件夹里的每一个子文件夹代表了一个页面，每个页面所用到的所有静态资源都存放在这个子文件下面（除了引用的公共资源以外），构建的时候，每个子文件夹会生成自己的静态资源供页面引用。
 
-var webpackDevMiddleware = require("webpack-dev-middleware");
-var webpack = require("webpack");
+2、common文件夹里面的所有代码在构建的时候会单独生成js文件和css文件供页面引用。所以一个页面会引用两个js和两个css.里面存放的是每个页面都会用到的一些共用资源。比如触屏端使用了react,那么跟react相关的那些包就会放在common里面。
 
-var compiler = webpack({
-    // configuration
-    output: { path: '/' }
-});
+3、components文件夹里面存放的是共用组件，每一个子文件夹代表了一个组件。有可能是通用的功能组件，比如分页组件，Loading组件，ModalDialog组件。也有可能是一个通用的业务组件，比如站点通用头部，通用footer，通用分享组件。注意，在其他地方引用这些组件时，是不需要写相对路径的，直接写组件名字就可以了，比如import pager from ‘pager’。这样对使用者更方便。
 
-app.use(webpackDevMiddleware(compiler, {
-    // options
-}));
-　　有些好处可能没有说到，webpack可能过几年它就会被取代也是有可能，但是现在如果你说你不会，那就请赶快恶补吧，它会带你飞的。
+4、lib文件夹存放的是通用的js类库。比如检测浏览器用的browserDetect.js,处理日期用的dateUtil.js。同样的，在其他地方需要引入这些JS时，也不需要写相对路径，直接写JS的名字就可以了。比如import{isIE} from ‘browserDetect’。
 
-以上分析结合自己工作经验之谈，有些可能说大呢，说错了大家就一笑而过，不对的地方也希望诚恳指出。
+5、style文件夹里面存放的一些公用的sass资源。比如function,mixing, variable。其他的sass文件需要引入这些资源的时候，使用方式跟使用通用js一样，直接@import “base.scss"即可。
+
+
+**架构是个不断完善的过程，而把架构尤其是跟规范相关的部分落实到具体业务系统里面更是个团队不断磨合的过程。它最终考验的，同时也是最终磨合出来的是团队的成熟度。**
