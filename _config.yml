@@ -3,11 +3,11 @@
 ## Source: https://github.com/hexojs/hexo/
 
 # Site
-title: 时光  漫步
-subtitle: 追求规范，讲究高效，符合标准
-description: You are the owner of your career.
-author: 小栋同学
-language: zh-Hans
+title: Hexo
+subtitle:
+description:
+author: John Doe
+language:
 timezone:
 
 # URL
@@ -26,9 +26,7 @@ category_dir: categories
 code_dir: downloads/code
 i18n_dir: :lang
 skip_render:
-duoshuo_shortname: xiaodongtongxue
-avatar: /uploads/touxiang.png
-baidu_analytics: 1bb8cb9144e28da63279255dadca25ce
+
 # Writing
 new_post_name: :title.md # File name of new posts
 default_layout: post
@@ -50,9 +48,6 @@ default_category: uncategorized
 category_map:
 tag_map:
 
-
-
-
 # Date / Time format
 ## Hexo uses Moment.js to parse and display date
 ## You can customize the date format as defined in
@@ -71,8 +66,6 @@ pagination_dir: page
 theme: next
 
 # Deployment
-## Docs: http://hexo.io/docs/deployment.html
+## Docs: https://hexo.io/docs/deployment.html
 deploy:
-  type: git
-  repo: git@github.com:xiaodongtongxue/xiaodongtongxue.github.io.git
-  branch: master
+  type:
